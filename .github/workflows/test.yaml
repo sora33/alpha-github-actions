@@ -1,0 +1,22 @@
+name: Github Actions test
+
+on: [push]
+
+jobs:
+  github-actions-test:
+    runs-on: ubuntu-latest
+    steps:
+  
+    - run: echo "イベントトリガーは、${{ github.event_name }}です"
+    - run: echo "実行環境は、${{ runner.os }}です"
+    - run: echo "ブランチは、${{ github.ref }} @ ${{ github.repository }} です"
+
+    - name: ファイルのチェックアウト
+      uses: actions/checkout@v3
+
+    - name: ファイルの確認
+      run: |
+        ls ${{ github.workspace }} -la
+        ls -la
+        pwd
+
